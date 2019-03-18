@@ -1,0 +1,14 @@
+@startuml
+
+component Client
+component Server
+database Neo4j
+component Kafka 
+
+Kafka <-- Client: consumes/produces
+Server --> Kafka: produces/consumes
+Neo4j <-- Server
+
+note left of Kafka: Pub/Sub bus
+
+@enduml

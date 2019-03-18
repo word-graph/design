@@ -1,0 +1,15 @@
+@startuml
+
+actor User
+participant Server
+database Neo4j
+participant Kafka
+
+User --> Server: I want to join!
+Server --> User: Give me a team and a username
+User --> Server: Here's a team and a username
+Server --> User: Okay, here's some kafka connection information
+User --> Kafka: Connect to Kafka
+Kafka --> User: Here's literally everything that you need
+
+@enduml

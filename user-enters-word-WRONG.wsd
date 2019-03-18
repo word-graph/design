@@ -1,0 +1,14 @@
+@startuml
+
+actor User
+participant Server
+database Neo4j
+participant Kafka
+
+User --> Server: try "foo"
+Server --> Neo4j: does "foo" exist in the graph?
+Neo4j --> Server: yes, "foo" exists in the graph
+Server --> User: Nope
+
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+
+actor User
+participant Server
+participant MysteryCache
+database Neo4j
+participant Kafka
+
+User --> Server: try "foo"
+Server --> MysteryCache: does "foo" exist in the graph?
+MysteryCache --> Server: yes, "foo" exists in the graph
+Server --> MysteryCache: 
+Server --> User: Good job!
+Server --> Kafka: post "foo exists" on the "graph changed" topic
+Kafka --> User: yo, update please
+
+
+@enduml
